@@ -1,11 +1,12 @@
 package com.shubh.springbootTut;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile("prod")
+@ConditionalOnProperty(name = "db.type", havingValue = "postgres")
 public class PgDB implements DataBase{
 
     @Override
